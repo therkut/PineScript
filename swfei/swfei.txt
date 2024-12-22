@@ -188,7 +188,7 @@ if ema_ok and ema1Show and barstate.islast
     ema_text = (ema3Show ? "EMA " + str.tostring(ema3) + ": " + str.tostring(math.round_to_mintick(ema55)) + "\n" : "") +
                (ema2Show ? "EMA " + str.tostring(ema2) + ": " + str.tostring(math.round_to_mintick(ema22)) + "\n" : "") +
                (ema1Show ? "EMA " + str.tostring(ema1) + ": " + str.tostring(math.round_to_mintick(ema8)) + "" : "")
-    label.set_xy(label_id, bar_index, ema8) 
+    label.set_xy(label_id, bar_index + 5, ema8) 
     label.set_text(label_id, ema_text)
     label.set_tooltip(label_id, ema_text)
 //-----------------------------------------------------------------------------}
