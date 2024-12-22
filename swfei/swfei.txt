@@ -4,8 +4,6 @@
 //# * Github: https://github.com/therkut/PineScript/tree/main/swfei
 //# * Strategic: https://drive.google.com/file/d/11hIEjxSnyfGx1IyKce1SzKlHS1uUpzTq/view
 indicator("SuperWaveTrend Fibonacci Ema Ichimoku Indicator", "SWFEI", overlay= true, max_bars_back = 5000)
-import TradingView/ta/9
-
 //-----------------------------------------------------------------------------{
 //1- SUPERTREND
 //# * Author      : © KivancOzbilgic
@@ -242,3 +240,4 @@ vbcb_VolColor = vbcb_vold1 ? vbcb_cold1 : vbcb_vold2 ? vbcb_cold2 : vbcb_vold3 ?
 
 barcolor(vbcb_ok ? vbcb_VolColor : na, title = 'Volume Based Coloured Bars')
 //-----------------------------------------------------------------------------}
+
