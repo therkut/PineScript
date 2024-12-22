@@ -15,9 +15,9 @@ indicator("SuperWaveTrend Fibonacci Ema Ichimoku Indicator", "SWFEI", overlay= t
 ////////////////////////
 super_ok = input(true, title = '═══════════════ SuperTrend Settings ')
 
-Periods = input.int(title = 'ATR Period', defval = 10, group = 'SuperTrend', inline = 'ST')
-st_src = input.source(hl2, title = 'Source', group = 'SuperTrend', inline = 'ST')
-Multiplier = input.float(title = 'ATR Multiplier', step = 0.1, defval = 1.0, group = 'SuperTrend', inline = 'ST')
+Periods = input.int(title = 'ATR Period', defval = 10, group = 'SuperTrend')
+st_src = input.source(hl2, title = 'Source', group = 'SuperTrend')
+Multiplier = input.float(title = 'ATR Multiplier', step = 0.1, defval = 1.0, group = 'SuperTrend')
 changeATR = input.bool(false, title = 'Change ATR Calculation Method ?', group = 'SuperTrend')
 showsignals = input.bool(true, title = 'Show Buy/Sell Signals ?', group = 'SuperTrend')
 highlighting = input.bool(false, title = 'Highlighter On/Off ?', group = 'SuperTrend')
@@ -162,20 +162,35 @@ ema2Show = input.bool(defval = true, group = 'MA', inline = 'E23', title = '')
 ema3 = input.int(defval = 55, title = 'EMA 3', group = 'MA', inline = 'E3')
 ema3Show = input.bool(defval = true, group = 'MA', inline = 'E3', title = '')
 
+ema4 = input.int(defval = 200, title = 'EMA 4', group = 'MA', inline = 'E4')
+ema4Show = input.bool(defval = true, group = 'MA', inline = 'E4', title = '')
+
 // EMA Calculation
 ema8 = ta.ema(close, ema1)
 ema22 = ta.ema(close, ema2)
 ema55 = ta.ema(close, ema3)
+ema200 = ta.ema(close, ema4)
+
+// Plot EMAs
+// plot(ema1Show ? ema8 : na, title = 'EMA 8', color = color.blue, linewidth = 2)
+// plot(ema2Show ? ema22 : na, title = 'EMA 22', color = color.red, linewidth = 2)
+// plot(ema3Show ? ema55 : na, title = 'EMA 55', color = color.green, linewidth = 2)
+plot(ema4Show ? ema200 : na, title = 'EMA 200', color = color.yellow, linewidth = 4)
 
 // Display EMA Values
 if ema_ok and barstate.islast
     var label_id = label.new(bar_index + 10, na, "", xloc.bar_index, yloc.price, color.blue, label.style_label_left, color.white, size.normal, text.align_left)
-    ema_text = (ema1Show ? "EMA" + str.tostring(ema1) + ": " + str.tostring(math.round_to_mintick(ema8)) + "\n" : "") +
-               (ema2Show ? "EMA" + str.tostring(ema2) + ": " + str.tostring(math.round_to_mintick(ema22)) + "\n" : "") +
-               (ema3Show ? "EMA" + str.tostring(ema3) + ": " + str.tostring(math.round_to_mintick(ema55)) + "\n" : "")
+    ema_text = (ema3Show ? "EMA " + str.tostring(ema3) + ": " + str.tostring(math.round_to_mintick(ema55)) + "\n" : "") +
+               (ema2Show ? "EMA " + str.tostring(ema2) + ": " + str.tostring(math.round_to_mintick(ema22)) + "\n" : "") +
+               (ema1Show ? "EMA " + str.tostring(ema1) + ": " + str.tostring(math.round_to_mintick(ema8)) + "\n" : "") 
     label.set_xy(label_id, bar_index + 10, close)
     label.set_text(label_id, ema_text)
     label.set_tooltip(label_id, ema_text)
+
+if ema4Show and barstate.islast
+    var label_id_200 = label.new(x=bar_index, y=na, text="", xloc=xloc.bar_index, yloc=yloc.price, color=color.new(color.blue, 0), style=label.style_label_left, textcolor=color.white, size=size.normal, textalign=text.align_left)
+    label.set_xy(label_id_200, bar_index + 0, ema200)
+    label.set_text(label_id_200, "EMA 200: " + str.tostring(ema200, format.mintick))
 //-----------------------------------------------------------------------------}
 
 //-----------------------------------------------------------------------------{
