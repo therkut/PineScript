@@ -72,9 +72,10 @@ The Fibonacci Retracement tool plots key Fibonacci levels to identify potential 
 The EMA indicator tracks short, medium, and long-term price trends using Exponential Moving Averages.
 
 **Settings:**
-- EMA 1 Period
-- EMA 2 Period
-- EMA 3 Period
+- EMA 1 Period (EMA 8)
+- EMA 2 Period (EMA 22)
+- EMA 3 Period (EMA 55)
+- EMA 4 Period (EMA 200)
 - Show EMA Lines
 
 ### Ichimoku
@@ -172,9 +173,10 @@ Fibonacci Retracement aracı, potansiyel destek ve direnç alanlarını belirlem
 EMA indikatörü, Üssel Hareketli Ortalamalar kullanarak kısa, orta ve uzun vadeli fiyat trendlerini takip eder.
 
 **Ayarlar:**
-- EMA 1 Periyodu
-- EMA 2 Periyodu
-- EMA 3 Periyodu
+- EMA 1 Periyodu (Ema 8)
+- EMA 2 Periyodu (Ema 22)
+- EMA 3 Periyodu (Ema 55)
+- EMA 4 Periyodu ((Ema 200)
 - EMA Çizgilerini Göster
 
 ### Ichimoku
