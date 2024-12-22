@@ -179,15 +179,15 @@ plot(ema4Show ? ema200 : na, title = 'EMA 200', color = color.yellow, linewidth 
 
 // Display EMA Values
 if ema_ok and barstate.islast
-    var label_id = label.new(bar_index + 10, na, "", xloc.bar_index, yloc.price, color.blue, label.style_label_left, color.white, size.normal, text.align_left)
+    var label_id = label.new(x=bar_index, y=na, text="", xloc=xloc.bar_index, yloc=yloc.price, color=color.new(color.blue, 0), style=label.style_label_left, textcolor=color.white, size=size.normal, textalign=text.align_left)
     ema_text = (ema3Show ? "EMA " + str.tostring(ema3) + ": " + str.tostring(math.round_to_mintick(ema55)) + "\n" : "") +
                (ema2Show ? "EMA " + str.tostring(ema2) + ": " + str.tostring(math.round_to_mintick(ema22)) + "\n" : "") +
                (ema1Show ? "EMA " + str.tostring(ema1) + ": " + str.tostring(math.round_to_mintick(ema8)) + "\n" : "") 
-    label.set_xy(label_id, bar_index + 10, close)
+    label.set_xy(label_id, bar_index + 3, close)
     label.set_text(label_id, ema_text)
     label.set_tooltip(label_id, ema_text)
 
-if ema4Show and barstate.islast
+if ema_ok and ema4Show and barstate.islast
     var label_id_200 = label.new(x=bar_index, y=na, text="", xloc=xloc.bar_index, yloc=yloc.price, color=color.new(color.blue, 0), style=label.style_label_left, textcolor=color.white, size=size.normal, textalign=text.align_left)
     label.set_xy(label_id_200, bar_index + 0, ema200)
     label.set_text(label_id_200, "EMA 200: " + str.tostring(ema200, format.mintick))
