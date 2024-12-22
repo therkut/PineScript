@@ -1,6 +1,8 @@
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
 // by © therkut
 //@version=6
+//# * Github: https://github.com/therkut/PineScript/tree/main/swfei
+//# * Strategic: https://drive.google.com/file/d/11hIEjxSnyfGx1IyKce1SzKlHS1uUpzTq/view
 indicator("SuperWaveTrend Fibonacci Ema Ichimoku Indicator", "SWFEI", overlay= true, max_bars_back = 5000)
 
 //-----------------------------------------------------------------------------{
